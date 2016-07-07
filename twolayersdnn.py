@@ -37,7 +37,7 @@ with tf.Graph().as_default():
 
     Y = to_categorical(y, 3)
     model = tflearn.DNN(net)
-    model.fit(X, Y, show_metric=True, batch_size=len(X), n_epoch=100000, snapshot_epoch=False)
+    model.fit(X, Y, show_metric=True, batch_size=len(X), n_epoch=30000, snapshot_epoch=False)
 
 # plot the resulting classifier
 h = 0.02
