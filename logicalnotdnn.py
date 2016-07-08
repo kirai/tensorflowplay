@@ -13,7 +13,7 @@ X = [[0.], [1.]]
 Y = [[1.], [0.]]
 
 #Graph definition
-with tf.Graph.as_default():
+with tf.Graph().as_default():
 	g = tflearn.input_data(shape=[None, 1])
 	g = tflearn.fully_connected(g, 128, activation='linear')
 	g = tflearn.fully_connected(g, 128, activation='linear')
@@ -28,8 +28,4 @@ with tf.Graph.as_default():
 	print("Testing NOT operator")
 	print("NOT 0:", m.predict([[0.]]))
 	print("NOT 1:", m.predict([[1.]]))
-
-
-
-
 
