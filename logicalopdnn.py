@@ -47,7 +47,7 @@ with tf.Graph().as_default():
 
 	#Test model
 	print("Testing OR operator")
-	print("0 or 0:", m.predict([[0., 0.]]))
+	print("O or 0:", m.predict([[0., 0.]]))
 	print("0 or 1:", m.predict([[0., 1.]]))
 	print("1 or 0:", m.predict([[1., 0.]]))
 	print("1 or 1:", m.predict([[1., 1.]]))
