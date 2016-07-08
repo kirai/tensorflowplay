@@ -32,14 +32,14 @@ with tf.Graph().as_default():
     net = tflearn.fully_connected(net, 100, activation='relu', weights_init='normal',
                                   regularizer='L2', weight_decay=0.001)
     net = tflearn.fully_connected(net, 3, activation='softmax')
-    sgd = tflearn.SGD(learning_rate=1.0, lr_decay=0.96, decay_step=500)
+    sgd = tflearn.SGD(learning_rate=1.0, lr_decay=0.96, decay_step=5000)
     net = tflearn.regression(net, optimizer=sgd, loss='categorical_crossentropy')
 
     Y = to_categorical(y, 3)
     model = tflearn.DNN(net)
-    model.fit(X, Y, show_metric=True, batch_size=len(X), n_epoch=30000, snapshot_epoch=False)
+    model.fit(X, Y, show_metric=True, batch_size=len(X), n_epoch=10000, snapshot_epoch=False)
 
-# plot the resulting classifier
+# Plot the resulting classifier
 h = 0.02
 x_min, x_max = X[:, 0].min() - 1, X[:, 0].max() + 1
 y_min, y_max = X[:, 1].min() - 1, X[:, 1].max() + 1
