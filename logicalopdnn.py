@@ -2,7 +2,6 @@
 """
 Logical operators DNN training
 """
-
 from __future__ import absolute_import, division, print_function
 
 import tensorflow as tf
@@ -10,20 +9,20 @@ import tflearn
 
 # Graph definition
 def define_dnn_topology(input_num, first_layer, second_layer):
-    with tf.Graph().as_default():
-        g = tflearn.input_data(shape=[None, input_num])
-        g = tflearn.fully_connected(g, first_layer, activation='linear')
-        g = tflearn.fully_connected(g, second_layer, activation='linear')
-        g = tflearn.fully_connected(g, 1, activation='sigmoid')
-        g = tflearn.regression(g, optimizer='sgd', learning_rate=2., loss='mean_square')
-
+    tf.Graph().as_default()
+    shape=[None, input_num]
+    g = tflearn.input_data(shape=[None, input_num])
+    g = tflearn.fully_connected(g, first_layer, activation='linear')
+    g = tflearn.fully_connected(g, second_layer, activation='linear')
+    g = tflearn.fully_connected(g, 1, activation='sigmoid')
+    g = tflearn.regression(g, optimizer='sgd', learning_rate=2., loss='mean_square')
+    
     return g 
 
-#Model training
+# Model training
 def train_dnn(X, Y, g, n_epoch):
     m = tflearn.DNN(g)
     m.fit(X, Y, n_epoch=n_epoch, snapshot_epoch=False)
-
     return m
 
 # Logical NOT operator
