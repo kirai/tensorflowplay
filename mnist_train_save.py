@@ -11,7 +11,7 @@ from keras.utils import np_utils
 
 batch_size = 128
 nb_classes = 10
-nb_epoch = 12
+nb_epoch = 2
 
 # input image dimensions
 img_rows, img_cols = 28, 28
@@ -65,5 +65,9 @@ score = model.evaluate(X_test, Y_test, verbose=0)
 print('Test score:', score[0])
 print('Test accuracy:', score[1])
 
+#save this to file
+with open('model.json', 'w') as f:
+    f.write(model.to_json())
 
+model.save_weights('modelweights.hdf5')
 
