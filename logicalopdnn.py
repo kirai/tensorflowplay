@@ -10,13 +10,12 @@ import tflearn
 # Graph definition
 def define_dnn_topology(input_num, first_layer, second_layer):
     tf.Graph().as_default()
-    shape=[None, input_num]
     g = tflearn.input_data(shape=[None, input_num])
     g = tflearn.fully_connected(g, first_layer, activation='linear')
     g = tflearn.fully_connected(g, second_layer, activation='linear')
     g = tflearn.fully_connected(g, 1, activation='sigmoid')
     g = tflearn.regression(g, optimizer='sgd', learning_rate=2., loss='mean_square')
-    
+    tf.Graph().finalize() 
     return g 
 
 # Model training
@@ -82,4 +81,3 @@ print("0 xor 0:", m.predict([[0., 0.]]))
 print("0 xor 1:", m.predict([[0., 1.]]))
 print("1 xor 0:", m.predict([[1., 0.]]))
 print("1 xor 1:", m.predict([[1., 1.]]))
-
