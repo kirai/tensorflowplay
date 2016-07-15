@@ -1,5 +1,7 @@
 from __future__ import print_function
 import numpy as np
+import sys
+import argparse
 
 np.random.seed(1337)  # for reproducibility
 
@@ -10,8 +12,8 @@ from keras.layers import Convolution2D, MaxPooling2D
 from keras.utils import np_utils
 
 batch_size = 128
-nb_classes = 10
 nb_epoch = 2
+nb_classes = 10
 
 # input image dimensions
 img_rows, img_cols = 28, 28
@@ -46,13 +48,13 @@ model.add(Convolution2D(nb_filters, nb_conv, nb_conv, border_mode='valid',input_
 model.add(Activation('relu'))
 model.add(Convolution2D(nb_filters, nb_conv, nb_conv))
 model.add(MaxPooling2D(pool_size=(nb_pool, nb_pool)))
-model.add(Dropout(0.25))
+model.add(Dropout(0.1))
 
 # Flatten and prevent overfitting
 model.add(Flatten())
 model.add(Dense(128))
 model.add(Activation('relu'))
-model.add(Dropout(0.5))
+model.add(Dropout(0.1))
 model.add(Dense(nb_classes))
 model.add(Activation('softmax'))
 
@@ -66,8 +68,17 @@ print('Test score:', score[0])
 print('Test accuracy:', score[1])
 
 #save this to file
-with open('model.json', 'w') as f:
+with open('modeldropout01.json', 'w') as f:
     f.write(model.to_json())
 
-model.save_weights('modelweights.hdf5')
+model.save_weights('modelweightsdropout01.hdf5')
 
+
+if __name__ == '__main__': 
+    parser = argparse.ArgumentParser()
+    parser.add_argument('-batch_size', default=128, dest = 'batch_size', type=int)
+    parser.add_argument('-epochs', dest="epochs", type=int)
+    args_data = parser.parse_args()
+
+    batch_size = args_data.batch_size
+    nb_epoch = args_data.epochs 
