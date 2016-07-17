@@ -73,6 +73,7 @@ with open('modeldropout01.json', 'w') as f:
 
 model.save_weights('modelweightsdropout01.hdf5')
 
+# http://stackoverflow.com/questions/8351732/python-2-7-argparse
 
 if __name__ == '__main__': 
     parser = argparse.ArgumentParser()
