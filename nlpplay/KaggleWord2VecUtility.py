@@ -15,13 +15,16 @@ class KaggleWord2VecUtility(object):
         # Function to convert a document to a sequence of words
         # Optionally removing stop words.  Returns a list of words.
         
-        review_text = BeautifulSoup(review).get_text() # Remove HTML
+        review_text = BeautifulSoup(review, "html.parser").get_text() # Remove HTML
         review_text = re.sub("[^a-zA-Z]"," ", review_text) #Remove non-letters
+
+        words = review_text.lower().split()
+
         # 4. Optionally remove stop words (false by default)
         if remove_stopwords:
             stops = set(stopwords.words("english"))
             words = [w for w in words if not w in stops]
-        #
+        
         # 5. Return a list of words
         return(words)
 
@@ -46,4 +49,3 @@ class KaggleWord2VecUtility(object):
         # Return the list of sentences (each sentence is a list of words,
         # so this returns a list of lists
         return sentences
-
