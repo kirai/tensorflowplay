@@ -1,6 +1,4 @@
-
 # Personal playground for Deep Learning
-
 
 MNIST
 =====

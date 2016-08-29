@@ -6,6 +6,8 @@
 # (A == B).mean()
 # https://www.kaggle.com/c/word2vec-nlp-tutorial/details/part-1-for-beginners-bag-of-words
 
+# Explicacion way: https://github.com/pangolulu/sentiment-analysis
+
 import os
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.ensemble import RandomForestClassifier
