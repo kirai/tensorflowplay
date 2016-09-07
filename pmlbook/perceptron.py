@@ -22,7 +22,7 @@ class Perceptron(object):
 		self.eta = eta
 		self.n_iter = n_iter
 	
-	def fit(self, x, y):
+	def fit(self, X, y):
 		"""Fit training data
 		
 		Parameters
@@ -57,5 +57,5 @@ class Perceptron(object):
 
 	def predict(self, X):
 		"""Return class label after unit step"""
-		return np.where(self.net_input(x) >= 0.0, 1, -1)
+		return np.where(self.net_input(X) >= 0.0, 1, -1)
 		
