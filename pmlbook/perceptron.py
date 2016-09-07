@@ -52,7 +52,7 @@ class Perceptron(object):
 		return self
 	
 	def net_input(self, X):
-		"""Calculate net input"""
+		"""Calculate net input. IT calculates the vector dot product of w_transposed and x"""
 		return np.dot(X, self.w_[1:]) + self.w_[0]
 
 	def predict(self, X):
